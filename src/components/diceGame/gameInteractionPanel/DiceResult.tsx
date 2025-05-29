@@ -6,10 +6,8 @@ interface DiceResultProps {
   value: number | null;
 }
 
-const DiceResult: FC<DiceResultProps> = ({ value }) => {
-  if (value === null) return null;
-
-  return <StyledResultNumber variant="h3">{value}</StyledResultNumber>;
-};
+const DiceResult: FC<DiceResultProps> = ({ value }) => (
+  <StyledResultNumber variant="h3">{value ?? 0}</StyledResultNumber>
+);
 
 export default DiceResult;

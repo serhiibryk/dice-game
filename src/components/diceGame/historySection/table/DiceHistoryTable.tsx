@@ -1,7 +1,9 @@
-import { FC } from 'react';
-import { TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+'use client';
 
-import { StyledTable } from '@/styles/diceHistoryTable.styles';
+import { FC } from 'react';
+import { TableBody, TableHead, TableRow } from '@mui/material';
+
+import { StyledTable, StyledTableHeadCell } from '@/styles/diceHistoryTable.styles';
 import { IGameResult } from '@/types/game';
 
 import DiceHistoryRow from './DiceHistoryRow';
@@ -14,11 +16,11 @@ const DiceHistoryTable: FC<DiceHistoryTableProps> = ({ history }) => (
   <StyledTable>
     <TableHead>
       <TableRow>
-        <TableCell>Time</TableCell>
+        <StyledTableHeadCell>Time</StyledTableHeadCell>
 
-        <TableCell>Guess</TableCell>
+        <StyledTableHeadCell>Guess</StyledTableHeadCell>
 
-        <TableCell>Result</TableCell>
+        <StyledTableHeadCell>Result</StyledTableHeadCell>
       </TableRow>
     </TableHead>
     <TableBody>

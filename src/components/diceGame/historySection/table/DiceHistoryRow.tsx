@@ -1,7 +1,12 @@
-import { FC } from 'react';
-import { TableRow, TableCell } from '@mui/material';
+'use client';
 
-import { ColoredResultCell } from '@/styles/diceHistoryRow.styles';
+import { FC } from 'react';
+
+import {
+  ColoredResultCell,
+  StyledTableCell,
+  StyledTableRow,
+} from '@/styles/diceHistoryRow.styles';
 import { IGameResult } from '@/types/game';
 
 interface DiceHistoryRowProps {
@@ -9,15 +14,15 @@ interface DiceHistoryRowProps {
 }
 
 const DiceHistoryRow: FC<DiceHistoryRowProps> = ({ entry }) => (
-  <TableRow>
-    <TableCell>{entry.time}</TableCell>
+  <StyledTableRow>
+    <StyledTableCell>{entry.time}</StyledTableCell>
 
-    <TableCell>{entry.guess}</TableCell>
+    <StyledTableCell>{entry.guess}</StyledTableCell>
 
     <ColoredResultCell iswin={entry.isWin.toString()}>
       {entry.result}
     </ColoredResultCell>
-  </TableRow>
+  </StyledTableRow>
 );
 
 export default DiceHistoryRow;

@@ -20,6 +20,7 @@ export const useDiceGame = (): IUseDiceGameReturn => {
   const [direction, setDirection] = useState<Direction>(DirectionEnum.Under);
   const [result, setResult] = useState<number | null>(null);
   const [history, setHistory] = useState<IGameResult[]>([]);
+  const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
   const roll = (): IRollResult => {
     const isUnderDir = direction === DirectionEnum.Under;
@@ -48,18 +49,23 @@ export const useDiceGame = (): IUseDiceGameReturn => {
     } catch (err) {
       console.error('Failed to parse dice game history:', err);
       localStorage.removeItem(HISTORY_KEY);
+    } finally {
+      setIsInitialized(true);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
-  }, [history]);
+    if (isInitialized) {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+    }
+  }, [history, isInitialized]);
 
   return {
     threshold,
     direction,
     result,
     history,
+    isInitialized,
     setThreshold,
     setDirection,
     roll,

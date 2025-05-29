@@ -3,14 +3,18 @@
 import { FC, useCallback } from 'react';
 import { Alert, Snackbar } from '@mui/material';
 
-import { Container, StyledPaper } from '@/styles/diceGame.styles';
 import { DirectionFailHint } from '@/types/constants';
 import { useDiceGame } from '@/hooks/useDiceGame';
 import { useSnackbar } from '@/hooks/useSnackbar';
+import {
+  Container,
+  InteractionPanellWrapper,
+  StyledPaper,
+} from '@/styles/diceGame.styles';
 
 import DiceControls from './gameInteractionPanel/DiceControls';
-import DiceHistoryTable from './historyTable/DiceHistoryTable';
 import DiceResult from './gameInteractionPanel/DiceResult';
+import DiceHistorySection from './historySection/DiceHistorySection';
 
 const SHACKBAR_AUTO_HIDE_DURATION = 10000;
 
@@ -21,6 +25,7 @@ const DiceGame: FC = () => {
     direction,
     result,
     history,
+    isInitialized,
     setThreshold,
     setDirection,
     roll,
@@ -36,18 +41,20 @@ const DiceGame: FC = () => {
 
   return (
     <Container>
-      <StyledPaper elevation={2}>
-        <DiceResult value={result} />
-        <DiceControls
-          threshold={threshold}
-          direction={direction}
-          setThreshold={setThreshold}
-          setDirection={setDirection}
-          onRoll={handlePlay}
-        />
+      <StyledPaper elevation={0}>
+        <InteractionPanellWrapper>
+          <DiceResult value={result} />
+          <DiceControls
+            threshold={threshold}
+            direction={direction}
+            setThreshold={setThreshold}
+            setDirection={setDirection}
+            onRoll={handlePlay}
+          />
+        </InteractionPanellWrapper>
       </StyledPaper>
 
-      <DiceHistoryTable history={history} />
+      <DiceHistorySection isInitialized={isInitialized} history={history} />
 
       <Snackbar
         open={snackbar.open}

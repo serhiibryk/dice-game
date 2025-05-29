@@ -1,8 +1,9 @@
 import { FC, memo } from 'react';
-import { Radio, FormControlLabel, Slider } from '@mui/material';
+import { Radio, FormControlLabel } from '@mui/material';
 
 import { DirectionEnum, DirectionLabels } from '@/types/constants';
 import { StyledRadioGroup } from '@/styles/diceControls.styles';
+import { StyledSlider } from '@/styles/diceGame.styles';
 import PrimaryButton from '@/components/PrimaryButton';
 import { Direction } from '@/types/game';
 
@@ -33,11 +34,12 @@ const DiceControls: FC<DiceControlsProps> = ({
           value={dir}
           control={<Radio />}
           label={DirectionLabels[dir]}
+          labelPlacement="start"
         />
       ))}
     </StyledRadioGroup>
 
-    <Slider
+    <StyledSlider
       value={threshold}
       min={0}
       max={100}
