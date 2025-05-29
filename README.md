@@ -43,7 +43,7 @@ A simple interactive dice game built with **Next.js**, **TypeScript**, and **Mat
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/dice-game.git
+git clone https://github.com/serhiibryk/dice-game.git
 cd dice-game
 ```
 
