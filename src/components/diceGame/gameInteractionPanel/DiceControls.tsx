@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Radio, RadioGroup, FormControlLabel, Slider } from '@mui/material';
 
+import { DirectionEnum, DirectionLabels } from '@/types/constants';
 import PrimaryButton from '@/components/PrimaryButton';
 import { Direction } from '@/types/game';
-import { DirectionEnum, DirectionLabels } from '@/types/constants';
 
 interface DiceControlsProps {
   direction: Direction;
@@ -53,4 +53,4 @@ const DiceControls: FC<DiceControlsProps> = ({
   </>
 );
 
-export default DiceControls;
+export default memo(DiceControls);

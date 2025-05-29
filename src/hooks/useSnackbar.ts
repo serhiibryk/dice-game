@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { ISnackbarData, IUseSnackbarReturn } from '@/types/snackbar';
 
@@ -9,11 +9,13 @@ export const useSnackbar = (): IUseSnackbarReturn => {
     win: false,
   });
 
-  const show = (message: string, win: boolean) => {
+  const show = useCallback((message: string, win: boolean) => {
     setSnackbarData({ open: true, message, win });
-  };
+  }, []);
 
-  const close = () => setSnackbarData((prev) => ({ ...prev, open: false }));
+  const close = useCallback(() => {
+    setSnackbarData((prev) => ({ ...prev, open: false }));
+  }, []);
 
   return { snackbar: snackbarData, show, close };
 };

@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import { Alert, Paper, Snackbar, Box } from '@mui/material';
 
 import { useDiceGame } from '@/hooks/useDiceGame';
@@ -25,13 +25,13 @@ const DiceGame: FC = () => {
     roll,
   } = useDiceGame();
 
-  const handlePlay = () => {
+  const handlePlay = useCallback(() => {
     const { win } = roll();
     showSnackbar(
       win ? 'You won' : `You lost — Number was ${DirectionFailHint[direction]}`,
       win,
     );
-  };
+  }, [direction, roll, showSnackbar]);
 
   return (
     <Box maxWidth={600} mx="auto" p={4}>

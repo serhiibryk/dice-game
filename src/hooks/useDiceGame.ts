@@ -39,9 +39,16 @@ export const useDiceGame = (): IUseDiceGameReturn => {
   };
 
   useEffect(() => {
-    const stored = localStorage.getItem(HISTORY_KEY);
-
-    if (stored) setHistory(JSON.parse(stored));
+    try {
+      const stored = localStorage.getItem(HISTORY_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) setHistory(parsed as IGameResult[]);
+      }
+    } catch (err) {
+      console.error('Failed to parse dice game history:', err);
+      localStorage.removeItem(HISTORY_KEY);
+    }
   }, []);
 
   useEffect(() => {
