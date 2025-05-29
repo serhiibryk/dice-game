@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 
 export const StyledTable = styled(Table)(({ theme }) => ({
   marginTop: theme.spacing(4),
-  maxWidth: 600,
+  maxWidth: theme.spacing(75),
   width: '100%',
 }));
 

@@ -7,16 +7,6 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   maxHeight: theme.spacing(4),
 }));
 
-export const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  minHeight: theme.spacing(4),
-  height: theme.spacing(4),
-  paddingTop: theme.spacing(0.5),
-  paddingBottom: theme.spacing(0.5),
-  paddingLeft: theme.spacing(1),
-  paddingRight: theme.spacing(1),
-  lineHeight: 1.2,
-}));
-
 export const ColoredResultCell = styled(TableCell)<{ iswin: string }>(
   ({ iswin }) => ({
     color: iswin === 'true' ? 'green' : 'red',
