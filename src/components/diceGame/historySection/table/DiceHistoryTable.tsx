@@ -3,7 +3,10 @@
 import { FC } from 'react';
 import { TableBody, TableHead, TableRow } from '@mui/material';
 
-import { StyledTable, StyledTableHeadCell } from '@/styles/diceHistoryTable.styles';
+import {
+  StyledTable,
+  StyledTableHeadCell,
+} from '@/styles/diceHistoryTable.styles';
 import { IGameResult } from '@/types/game';
 
 import DiceHistoryRow from './DiceHistoryRow';

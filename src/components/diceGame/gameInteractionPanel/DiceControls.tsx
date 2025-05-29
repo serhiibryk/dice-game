@@ -1,11 +1,11 @@
 import { FC, memo } from 'react';
 import { Radio, FormControlLabel } from '@mui/material';
 
-import { CUSTOM_SLIDER_MARKS, DirectionEnum, DirectionLabels } from '@/types/constants';
+import { DirectionEnum, DirectionLabels } from '@/types/constants';
 import { StyledRadioGroup } from '@/styles/diceControls.styles';
-import { StyledSlider } from '@/styles/diceGame.styles';
 import PrimaryButton from '@/components/PrimaryButton';
 import { Direction } from '@/types/game';
+import Slider from '@/components/Slider';
 
 interface DiceControlsProps {
   direction: Direction;
@@ -38,18 +38,7 @@ const DiceControls: FC<DiceControlsProps> = ({
         />
       ))}
     </StyledRadioGroup>
-
-    <StyledSlider
-      value={threshold}
-      min={0}
-      max={100}
-      step={1}
-      onChange={(_, val) => setThreshold(+val)}
-      valueLabelDisplay="on"
-      marks={CUSTOM_SLIDER_MARKS}
-      color="primary" 
-    />
-
+    <Slider value={threshold} onChange={setThreshold} />
     <PrimaryButton
       label="play"
       onClick={onRoll}

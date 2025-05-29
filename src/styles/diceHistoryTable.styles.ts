@@ -7,6 +7,6 @@ export const StyledTable = styled(Table)(({ theme }) => ({
   width: '100%',
 }));
 
-export const StyledTableHeadCell = styled(TableCell)(({ theme }) => ({
-  fontWeight: 600
+export const StyledTableHeadCell = styled(TableCell)(() => ({
+  fontWeight: 600,
 }));
