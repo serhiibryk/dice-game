@@ -1,4 +1,11 @@
 import { useEffect, useState } from 'react';
+
+import {
+  DEFAULT_TRESHOLD,
+  DirectionEnum,
+  DirectionLabels,
+  MAX_HISTORY_LENGTH,
+} from '@/types/constants';
 import {
   IUseDiceGameReturn,
   Direction,
@@ -7,28 +14,26 @@ import {
 } from '@/types/game';
 
 const HISTORY_KEY = 'dice_game_history';
-const DEFAULT_TRESHOLD = 20;
 
 export const useDiceGame = (): IUseDiceGameReturn => {
-  const [threshold, setThreshold] = useState(DEFAULT_TRESHOLD);
-  const [direction, setDirection] = useState<Direction>('under');
+  const [threshold, setThreshold] = useState<number>(DEFAULT_TRESHOLD);
+  const [direction, setDirection] = useState<Direction>(DirectionEnum.Under);
   const [result, setResult] = useState<number | null>(null);
   const [history, setHistory] = useState<IGameResult[]>([]);
 
   const roll = (): IRollResult => {
-    const isUnderDir = direction === 'under';
+    const isUnderDir = direction === DirectionEnum.Under;
     const rolled = Math.floor(Math.random() * 100) + 1;
     const win = isUnderDir ? rolled < threshold : rolled > threshold;
-    const now = new Date().toLocaleTimeString();
     const entry: IGameResult = {
-      time: now,
-      guess: `${isUnderDir ? 'Under' : 'Over'} ${threshold}`,
+      time: new Date().toLocaleTimeString(),
+      guess: `${DirectionLabels[direction]} ${threshold}`,
       result: rolled,
       isWin: win,
     };
 
     setResult(rolled);
-    setHistory((prev) => [entry, ...prev.slice(0, 9)]);
+    setHistory((prev) => [entry, ...prev.slice(0, MAX_HISTORY_LENGTH - 1)]);
 
     return { rolled, win, entry };
   };

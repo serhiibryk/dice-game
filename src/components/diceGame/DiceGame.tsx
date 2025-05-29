@@ -5,6 +5,7 @@ import { Alert, Paper, Snackbar, Box } from '@mui/material';
 
 import { useDiceGame } from '@/hooks/useDiceGame';
 import { useSnackbar } from '@/hooks/useSnackbar';
+import { DirectionFailHint } from '@/types/constants';
 
 import DiceControls from './gameInteractionPanel/DiceControls';
 import DiceResult from './gameInteractionPanel/DiceResult';
@@ -27,9 +28,7 @@ const DiceGame: FC = () => {
   const handlePlay = () => {
     const { win } = roll();
     showSnackbar(
-      win
-        ? 'You won! 🎉'
-        : `You lost — Number was ${direction === 'under' ? 'lower' : 'higher'}`,
+      win ? 'You won' : `You lost — Number was ${DirectionFailHint[direction]}`,
       win,
     );
   };

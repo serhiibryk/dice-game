@@ -1,4 +1,6 @@
-export type Direction = 'under' | 'over';
+import { DirectionEnum } from './constants';
+
+export type Direction = DirectionEnum;
 
 export interface IGameResult {
   time: string;

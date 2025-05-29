@@ -3,6 +3,7 @@ import { Radio, RadioGroup, FormControlLabel, Slider } from '@mui/material';
 
 import PrimaryButton from '@/components/PrimaryButton';
 import { Direction } from '@/types/game';
+import { DirectionEnum, DirectionLabels } from '@/types/constants';
 
 interface DiceControlsProps {
   direction: Direction;
@@ -26,9 +27,14 @@ const DiceControls: FC<DiceControlsProps> = ({
       onChange={(e) => setDirection(e.target.value as Direction)}
       sx={{ justifyContent: 'center', mb: 2 }}
     >
-      <FormControlLabel value="under" control={<Radio />} label="Under" />
-
-      <FormControlLabel value="over" control={<Radio />} label="Over" />
+      {Object.values(DirectionEnum).map((dir) => (
+        <FormControlLabel
+          key={dir}
+          value={dir}
+          control={<Radio />}
+          label={DirectionLabels[dir]}
+        />
+      ))}
     </RadioGroup>
 
     <Slider
@@ -39,7 +45,11 @@ const DiceControls: FC<DiceControlsProps> = ({
       valueLabelDisplay="on"
     />
 
-    <PrimaryButton label="PLAY" onClick={onRoll} />
+    <PrimaryButton
+      label="play"
+      onClick={onRoll}
+      sx={{ textTransform: 'uppercase' }}
+    />
   </>
 );
 
