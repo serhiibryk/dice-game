@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dice Game
 
-## Getting Started
+A simple interactive dice game built with **Next.js**, **TypeScript**, and **Material UI**.
 
-First, run the development server:
+---
+
+## Technologies Used
+
+- [Next.js (App Router)](https://nextjs.org)
+- [TypeScript](https://www.typescriptlang.org)
+- [Material UI (MUI)](https://mui.com)
+- `localStorage` (for saving game history)
+
+---
+
+## Features
+
+- ✅ User sets a threshold from 0 to 100.
+- ✅ Chooses "Over" or "Under" as a condition.
+- ✅ Clicks "Play" to roll a random number from 1 to 100.
+- ✅ If the rolled number satisfies the condition — user wins.
+- ✅ Displays win/lose result via styled message.
+- ✅ Saves each game into history (max 10 records).
+- ✅ History is persisted in `localStorage`.
+
+---
+
+## How the Game Works
+
+1. You select a threshold (e.g. `20`).
+2. You choose the direction:
+   - **Over** — number should be `> 20`
+   - **Under** — number should be `< 20`
+3. Press **PLAY**.
+4. Dice rolls a number from 1 to 100.
+5. Result is shown immediately with success/fail message.
+6. The outcome is saved to the game history (up to 10 entries).
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/dice-game.git
+cd dice-game
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn install
+# or
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Start Development Server
 
-## Learn More
+```bash
+yarn dev
+# or
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open your browser at http://localhost:3000 and enjoy!
