@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { Typography } from '@mui/material';
+
+import { StyledResultNumber } from '@/styles/diceResult.styles';
 
 interface DiceResultProps {
   value: number | null;
@@ -8,11 +9,7 @@ interface DiceResultProps {
 const DiceResult: FC<DiceResultProps> = ({ value }) => {
   if (value === null) return null;
 
-  return (
-    <Typography variant="h3" sx={{ mb: 2 }}>
-      {value}
-    </Typography>
-  );
+  return <StyledResultNumber variant="h3">{value}</StyledResultNumber>;
 };
 
 export default DiceResult;

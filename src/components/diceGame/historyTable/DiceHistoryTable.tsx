@@ -1,12 +1,7 @@
 import { FC } from 'react';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from '@mui/material';
+import { TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 
+import { StyledTable } from '@/styles/diceHistoryTable.styles';
 import { IGameResult } from '@/types/game';
 
 import DiceHistoryRow from './DiceHistoryRow';
@@ -16,7 +11,7 @@ interface DiceHistoryTableProps {
 }
 
 const DiceHistoryTable: FC<DiceHistoryTableProps> = ({ history }) => (
-  <Table sx={{ mt: 4 }}>
+  <StyledTable>
     <TableHead>
       <TableRow>
         <TableCell>Time</TableCell>
@@ -31,7 +26,7 @@ const DiceHistoryTable: FC<DiceHistoryTableProps> = ({ history }) => (
         <DiceHistoryRow entry={entry} key={idx} />
       ))}
     </TableBody>
-  </Table>
+  </StyledTable>
 );
 
 export default DiceHistoryTable;

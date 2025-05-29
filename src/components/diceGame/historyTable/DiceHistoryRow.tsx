@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { TableRow, TableCell } from '@mui/material';
 
+import { ColoredResultCell } from '@/styles/diceHistoryRow.styles';
 import { IGameResult } from '@/types/game';
 
 interface DiceHistoryRowProps {
@@ -13,9 +14,9 @@ const DiceHistoryRow: FC<DiceHistoryRowProps> = ({ entry }) => (
 
     <TableCell>{entry.guess}</TableCell>
 
-    <TableCell sx={{ color: entry.isWin ? 'green' : 'red' }}>
+    <ColoredResultCell iswin={entry.isWin.toString()}>
       {entry.result}
-    </TableCell>
+    </ColoredResultCell>
   </TableRow>
 );
 

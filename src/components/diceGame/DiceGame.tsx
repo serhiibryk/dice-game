@@ -1,15 +1,16 @@
 'use client';
 
 import { FC, useCallback } from 'react';
-import { Alert, Paper, Snackbar, Box } from '@mui/material';
+import { Alert, Snackbar } from '@mui/material';
 
+import { Container, StyledPaper } from '@/styles/diceGame.styles';
+import { DirectionFailHint } from '@/types/constants';
 import { useDiceGame } from '@/hooks/useDiceGame';
 import { useSnackbar } from '@/hooks/useSnackbar';
-import { DirectionFailHint } from '@/types/constants';
 
 import DiceControls from './gameInteractionPanel/DiceControls';
-import DiceResult from './gameInteractionPanel/DiceResult';
 import DiceHistoryTable from './historyTable/DiceHistoryTable';
+import DiceResult from './gameInteractionPanel/DiceResult';
 
 const SHACKBAR_AUTO_HIDE_DURATION = 10000;
 
@@ -34,8 +35,8 @@ const DiceGame: FC = () => {
   }, [direction, roll, showSnackbar]);
 
   return (
-    <Box maxWidth={600} mx="auto" p={4}>
-      <Paper elevation={2} sx={{ p: 4, textAlign: 'center' }}>
+    <Container>
+      <StyledPaper elevation={2}>
         <DiceResult value={result} />
         <DiceControls
           threshold={threshold}
@@ -44,7 +45,7 @@ const DiceGame: FC = () => {
           setDirection={setDirection}
           onRoll={handlePlay}
         />
-      </Paper>
+      </StyledPaper>
 
       <DiceHistoryTable history={history} />
 
@@ -61,7 +62,7 @@ const DiceGame: FC = () => {
           {snackbar.message}
         </Alert>
       </Snackbar>
-    </Box>
+    </Container>
   );
 };
 
