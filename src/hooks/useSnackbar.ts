@@ -19,7 +19,7 @@ export const useSnackbar = (): IUseSnackbarReturn => {
         timerRef.current = setTimeout(() => {
           setSnackbarData({ open: true, message, win });
         }, 100);
-        
+
         return { ...prev, open: false };
       }
 

@@ -35,7 +35,6 @@ const SnackbarNotification: FC<SnackbarNotificationProps> = ({
       <StyledAlert
         severity={win ? 'success' : 'error'}
         variant="filled"
-        onClose={onClose}
       >
         <MainTitle isError={!win}>{title}</MainTitle>
         {description && <SubTitle>{description}</SubTitle>}
