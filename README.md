@@ -15,13 +15,13 @@ A simple interactive dice game built with **Next.js**, **TypeScript**, and **Mat
 
 ## Features
 
-- ✅ User sets a threshold from 0 to 100.
-- ✅ Chooses "Over" or "Under" as a condition.
-- ✅ Clicks "Play" to roll a random number from 1 to 100.
-- ✅ If the rolled number satisfies the condition — user wins.
-- ✅ Displays win/lose result via styled message.
-- ✅ Saves each game into history (max 10 records).
-- ✅ History is persisted in `localStorage`.
+- User sets a threshold from 0 to 100.
+- Chooses "Over" or "Under" as a condition.
+- Clicks "Play" to roll a random number from 1 to 100.
+- If the rolled number satisfies the condition — user wins.
+- Displays win/lose result via styled message.
+- Saves each game into history (max 10 records).
+- History is persisted in `localStorage`.
 
 ---
 
@@ -87,5 +87,5 @@ yarn export
 ### Author
 
 ```markdown
-## Serhii Bryk
+Serhii Bryk
 ```
