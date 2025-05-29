@@ -38,7 +38,7 @@ A simple interactive dice game built with **Next.js**, **TypeScript**, and **Mat
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -64,3 +64,28 @@ npm run dev
 ```
 
 Open your browser at http://localhost:3000 and enjoy!
+
+## Deployment
+
+### Vercel
+
+This app is fully compatible with [Vercel](https://vercel.com/):
+
+1. Push the project to GitHub
+2. Go to [https://vercel.com/new](https://vercel.com/new)
+3. Import your GitHub repo
+4. Use build command: `yarn build`
+5. Use output directory: `.next`
+
+### Or Static Export
+
+```bash
+yarn build
+yarn export
+```
+
+### Author
+
+```markdown
+## Serhii Bryk
+```
