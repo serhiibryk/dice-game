@@ -20,6 +20,7 @@ export interface IUseDiceGameReturn {
   direction: Direction;
   result: number | null;
   history: IGameResult[];
+  isInitialized: boolean;
   setThreshold: React.Dispatch<React.SetStateAction<number>>;
   setDirection: React.Dispatch<React.SetStateAction<Direction>>;
   roll: () => IRollResult;

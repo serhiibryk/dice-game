@@ -1,17 +1,20 @@
 'use client';
 
 import { FC, useCallback } from 'react';
-import { Alert, Paper, Snackbar, Box } from '@mui/material';
 
+import { DirectionFailHint } from '@/types/constants';
 import { useDiceGame } from '@/hooks/useDiceGame';
 import { useSnackbar } from '@/hooks/useSnackbar';
-import { DirectionFailHint } from '@/types/constants';
+import {
+  Container,
+  InteractionPanellWrapper,
+  StyledPaper,
+} from '@/styles/diceGame.styles';
 
 import DiceControls from './gameInteractionPanel/DiceControls';
 import DiceResult from './gameInteractionPanel/DiceResult';
-import DiceHistoryTable from './historyTable/DiceHistoryTable';
-
-const SHACKBAR_AUTO_HIDE_DURATION = 10000;
+import DiceHistorySection from './historySection/DiceHistorySection';
+import SnackbarNotification from '../SnackbarNotification';
 
 const DiceGame: FC = () => {
   const { snackbar, show: showSnackbar, close: closeSnackbar } = useSnackbar();
@@ -20,6 +23,7 @@ const DiceGame: FC = () => {
     direction,
     result,
     history,
+    isInitialized,
     setThreshold,
     setDirection,
     roll,
@@ -34,34 +38,29 @@ const DiceGame: FC = () => {
   }, [direction, roll, showSnackbar]);
 
   return (
-    <Box maxWidth={600} mx="auto" p={4}>
-      <Paper elevation={2} sx={{ p: 4, textAlign: 'center' }}>
-        <DiceResult value={result} />
-        <DiceControls
-          threshold={threshold}
-          direction={direction}
-          setThreshold={setThreshold}
-          setDirection={setDirection}
-          onRoll={handlePlay}
-        />
-      </Paper>
+    <Container>
+      <StyledPaper elevation={0}>
+        <InteractionPanellWrapper>
+          <DiceResult value={result} />
+          <DiceControls
+            threshold={threshold}
+            direction={direction}
+            setThreshold={setThreshold}
+            setDirection={setDirection}
+            onRoll={handlePlay}
+          />
+        </InteractionPanellWrapper>
+      </StyledPaper>
 
-      <DiceHistoryTable history={history} />
+      <DiceHistorySection isInitialized={isInitialized} history={history} />
 
-      <Snackbar
+      <SnackbarNotification
         open={snackbar.open}
-        autoHideDuration={SHACKBAR_AUTO_HIDE_DURATION}
+        message={snackbar.message}
+        win={snackbar.win}
         onClose={closeSnackbar}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      >
-        <Alert
-          severity={snackbar.win ? 'success' : 'error'}
-          onClose={closeSnackbar}
-        >
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
-    </Box>
+      />
+    </Container>
   );
 };
 

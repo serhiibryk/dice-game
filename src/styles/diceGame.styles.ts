@@ -1,22 +1,24 @@
-import { Box, Paper, Typography, Slider } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const Container = styled(Box)(({ theme }) => ({
-  maxWidth: 600,
   margin: '0 auto',
   padding: theme.spacing(4),
+  maxWidth: theme.spacing(75),
 }));
 
-export const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(4),
+export const StyledPaper = styled(Paper)(() => ({
+  display: 'flex',
   textAlign: 'center',
+  justifyContent: 'center',
 }));
 
-export const ResultNumber = styled(Typography)(({ theme }) => ({
-  fontSize: '4rem',
-  marginBottom: theme.spacing(2),
+export const InteractionPanellWrapper = styled(Box)(({ theme }) => ({
+  maxWidth: theme.spacing(40),
+  minWidth: theme.spacing(40),
 }));
 
-export const StyledSlider = styled(Slider)(({ theme }) => ({
-  marginTop: theme.spacing(3),
+export const NoHistoryTitle = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(4),
+  textAlign: 'center',
 }));
