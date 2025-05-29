@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { ISnackbarData, IUseSnackbarReturn } from '@/types/snackbar';
 
@@ -9,8 +9,22 @@ export const useSnackbar = (): IUseSnackbarReturn => {
     win: false,
   });
 
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const show = useCallback((message: string, win: boolean) => {
-    setSnackbarData({ open: true, message, win });
+    setSnackbarData((prev) => {
+      if (prev.open) {
+        if (timerRef.current) clearTimeout(timerRef.current);
+
+        timerRef.current = setTimeout(() => {
+          setSnackbarData({ open: true, message, win });
+        }, 100);
+        
+        return { ...prev, open: false };
+      }
+
+      return { open: true, message, win };
+    });
   }, []);
 
   const close = useCallback(() => {

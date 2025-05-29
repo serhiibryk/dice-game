@@ -1,7 +1,6 @@
 'use client';
 
 import { FC, useCallback } from 'react';
-import { Alert, Snackbar } from '@mui/material';
 
 import { DirectionFailHint } from '@/types/constants';
 import { useDiceGame } from '@/hooks/useDiceGame';
@@ -15,8 +14,7 @@ import {
 import DiceControls from './gameInteractionPanel/DiceControls';
 import DiceResult from './gameInteractionPanel/DiceResult';
 import DiceHistorySection from './historySection/DiceHistorySection';
-
-const SHACKBAR_AUTO_HIDE_DURATION = 10000;
+import SnackbarNotification from '../SnackbarNotification';
 
 const DiceGame: FC = () => {
   const { snackbar, show: showSnackbar, close: closeSnackbar } = useSnackbar();
@@ -56,19 +54,12 @@ const DiceGame: FC = () => {
 
       <DiceHistorySection isInitialized={isInitialized} history={history} />
 
-      <Snackbar
+      <SnackbarNotification
         open={snackbar.open}
-        autoHideDuration={SHACKBAR_AUTO_HIDE_DURATION}
+        message={snackbar.message}
+        win={snackbar.win}
         onClose={closeSnackbar}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      >
-        <Alert
-          severity={snackbar.win ? 'success' : 'error'}
-          onClose={closeSnackbar}
-        >
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
+      />
     </Container>
   );
 };
