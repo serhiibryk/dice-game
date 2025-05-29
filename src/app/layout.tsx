@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { CssBaseline } from '@mui/material';
+
+import ThemeProvider from '@/theme/ThemeProvider';
 
 import './globals.css';
 
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: ReactNode }) => (
   <html lang="en">
     <body suppressHydrationWarning={true}>
-      <CssBaseline />
-
-      {children}
+      <ThemeProvider>
+        {children}
+      </ThemeProvider>
     </body>
   </html>
 );
